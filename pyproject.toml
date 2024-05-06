@@ -10,7 +10,7 @@ python = "^3.12"
 aiohttp = "^3.9.5"
 asyncio = "^3.4.3"
 aiohttp-cors = "^0.7.0"
-k-diffusion = "^0.1.1.post1"
+k-diffusion = {git = "https://github.com/crowsonkb/k-diffusion.git"}
 
 
 [build-system]

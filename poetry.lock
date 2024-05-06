@@ -755,14 +755,12 @@ referencing = ">=0.31.0"
 
 [[package]]
 name = "k-diffusion"
-version = "0.1.1.post1"
+version = "0.2.0.dev0"
 description = "Karras et al. (2022) diffusion models for PyTorch"
 optional = false
 python-versions = "*"
-files = [
-    {file = "k-diffusion-0.1.1.post1.tar.gz", hash = "sha256:04b66b0e95202a60c4c178a482e6d31528b81a1c97011d6023ed3ad559de7166"},
-    {file = "k_diffusion-0.1.1.post1-py3-none-any.whl", hash = "sha256:b4bdcc74e35dd66df5d25433ea76b19edeaeaf2aad05ed97438be447cf4f5ee1"},
-]
+files = []
+develop = false
 
 [package.dependencies]
 accelerate = "*"
@@ -776,12 +774,18 @@ Pillow = "*"
 safetensors = "*"
 scikit-image = "*"
 scipy = "*"
-torch = ">=2.0"
+torch = ">=2.1"
 torchdiffeq = "*"
 torchsde = "*"
 torchvision = "*"
 tqdm = "*"
 wandb = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/crowsonkb/k-diffusion.git"
+reference = "HEAD"
+resolved_reference = "6ab5146d4a5ef63901326489f31f1d8e7dd36b48"
 
 [[package]]
 name = "kornia"
@@ -2485,4 +2489,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "d7dc9ea9511bee2a2a53c8aae134098dc16b0c8040a62f4a74873c8c1de57c59"
+content-hash = "ecfa95a2772c68f4d6d97f7540d414e22e5f5b2e00985f3c9cc5fa8afe33d58b"

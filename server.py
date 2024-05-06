@@ -16,7 +16,7 @@ import k_diffusion as K
 def main():
     checkpoint = './mm1_level.safetensors'
     steps = 50
-    size = 64
+    samples = 64
 
     config = K.config.load_config(checkpoint)
     model_config = config['model']
@@ -46,10 +46,10 @@ def main():
             x = torch.randn([n, model_config['input_channels'], size[0], size[1]], device=device) * sigma_max
             x_0 = K.sampling.sample_lms(model, x, sigmas, disable=not accelerator.is_local_main_process)
             return x_0
-        x_0 = K.evaluation.compute_features(accelerator, sample_fn, lambda x: x, size, size)
+        x_0 = K.evaluation.compute_features(accelerator, sample_fn, lambda x: x, samples, samples)
         if accelerator.is_main_process:
-            img_size = x_0[0].shape[0]
-            full_image = Image.new('RGB', (img_size, size * img_size))
+            img_size = x_0[0].shape[1]
+            full_image = Image.new('RGB', (img_size, samples * img_size))
             for i, out in enumerate(x_0):
                 base_img = K.utils.to_pil_image(out)
                 full_image.paste(base_img, (0, i * img_size))
