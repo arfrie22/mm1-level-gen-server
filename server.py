@@ -10,13 +10,16 @@ from tqdm import trange, tqdm
 
 from PIL import Image
 
+from dotenv import load_dotenv
+import os
+
 import k_diffusion as K
 
-
 def main():
-    checkpoint = './mm1_level.safetensors'
-    steps = 50
-    samples = 64
+    load_dotenv()
+    checkpoint = os.getenv('CHECKPOINT') or './mm1_level.safetensors'
+    steps = int(os.getenv('STEPS') or '50') or 50
+    samples = int(os.getenv('SAMPLES') or '8') or 8
 
     config = K.config.load_config(checkpoint)
     model_config = config['model']
